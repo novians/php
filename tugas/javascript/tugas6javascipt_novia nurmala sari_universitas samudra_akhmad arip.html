@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" 
+    rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  </head>
+  <body >
+    <br>
+       <h3 align="center">Data BMKG</h3><br>
+
+    <table align="center" border="1" cellspacing="5" cellpading="5" class="table table-bordered table-striped table-dark">
+        <thead >
+            <tr class="bg-warning">
+                <td class="bg-success">No</td>
+                <td class="bg-success">Lokasi</td>
+                <td class="bg-success">Skala</td>
+                <td class="bg-success">Dampak</td>
+            </tr>
+        </thead>
+        <tbody id="tampil">
+
+        </tbody>
+    </table>
+    <script>
+        let tampil = document.getElementById('tampil');
+        no = 1 ;
+        class Gempa{
+            constructor(lokasi, skala){
+                this.lokasi = lokasi;
+                this.skala = skala;
+            }
+
+            dampakgempa(){
+                if(this.skala <= 2) return this.dampak = "tidak terasa";
+                if(this.skala <= 4) return this.dampak = "Bagunan Roboh";
+                if(this.skala <= 6) return this.dampak = "Tanah Longsor";
+                return this.dampak = "tsunami";
+            }
+            infoGempa(){
+                tampil.innerHTML += `
+                <tr>
+                    <td>${no++}</td>
+                    <td>${this.lokasi}</td>
+                    <td>${this.skala}</td>
+                    <td>${this.dampakgempa()}</td>
+                </tr>
+
+            `;
+        }
+     }
+     const g1 = new Gempa('Banda Aceh' , 2);
+     g1.infoGempa();
+	const g2 = new Gempa('Lhokseumawe' , 3);
+     g2.infoGempa();
+ const g3 = new Gempa('Sabang' , 8);
+     g3.infoGempa();
+ const g4 = new Gempa('Langsa' , 5);
+     g4.infoGempa();
+     const g5 = new Gempa('Takengon' , 4.5);
+     g5.infoGempa();
+     const g6 = new Gempa('Meulaboh' , 6);
+     g6.infoGempa();
+     const g7 = new Gempa('Bireun' , 4.2);
+     g7.infoGempa();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" 
+    crossorigin="anonymous"></script>
+  </body>
+</html>
